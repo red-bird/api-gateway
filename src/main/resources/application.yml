@@ -14,10 +14,10 @@ spring:
             - Path=/api/shops/**
           filters:
             - StripPrefix=2
-            - name: RequestRateLimiter
-              args:
-                redis-rate-limiter.replenishRate: 20
-                redis-rate-limiter.burstCapacity: 40
+#            - name: RequestRateLimiter
+#              args:
+#                redis-rate-limiter.replenishRate: 20
+#                redis-rate-limiter.burstCapacity: 40
             - name: CircuitBreaker
               args:
                 name: ShopsCircuitBreaker
@@ -28,10 +28,10 @@ spring:
             - Path=/api/purchase/**
           filters:
             - StripPrefix=2
-            - name: RequestRateLimiter
-              args:
-                redis-rate-limiter.replenishRate: 20
-                redis-rate-limiter.burstCapacity: 40
+#            - name: RequestRateLimiter
+#              args:
+#                redis-rate-limiter.replenishRate: 200
+#                redis-rate-limiter.burstCapacity: 400
             - name: CircuitBreaker
               args:
                 name: PurchaseCircuitBreaker
@@ -39,13 +39,11 @@ spring:
     loadbalancer:
       ribbon:
         enabled: false
-  redis:
-    host: 172.17.0.2
+#  redis:
+#    host: 000.00.0.0
 
 eureka:
   instance:
-    hostname: localhost
-    prefer-ip-address: false
     instanceId: ${spring.application.name}:${random.uuid}
     leaseRenewalIntervalInSeconds: 1
     leaseExpirationDurationInSeconds: 3
