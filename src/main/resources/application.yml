@@ -1,0 +1,63 @@
+server:
+  port: ${PORT}
+spring:
+  output.ansi.enabled: ALWAYS
+
+#  cloud:
+#    gateway:
+#      discovery:
+#        locator:
+#          enabled: true
+#          lowerCaseServiceId: true
+#      routes:
+#        - id: shops-service
+#          uri: lb://shops-service
+#          predicates:
+#            - Path=/api/shops/**
+#          filters:
+#            - StripPrefix=2
+##            - name: RequestRateLimiter
+##              args:
+##                redis-rate-limiter.replenishRate: 20
+##                redis-rate-limiter.burstCapacity: 40
+#            - name: CircuitBreaker
+#              args:
+#                name: ShopsCircuitBreaker
+#                fallbackUri: forward:/fallbacks/shopFallback
+#        - id: purchase-service
+#          uri: lb://purchase-service
+#          predicates:
+#            - Path=/api/purchase/**
+#          filters:
+#            - StripPrefix=2
+##            - name: RequestRateLimiter
+##              args:
+##                redis-rate-limiter.replenishRate: 200
+##                redis-rate-limiter.burstCapacity: 400
+#            - name: CircuitBreaker
+#              args:
+#                name: PurchaseCircuitBreaker
+#                fallbackUri: forward:/fallbacks/purchaseFallback
+#    loadbalancer:
+#      ribbon:
+#        enabled: false
+##  redis:
+##    host: 000.00.0.0
+#
+#eureka:
+#  instance:
+#    instanceId: ${spring.application.name}:${random.uuid}
+#    leaseRenewalIntervalInSeconds: 1
+#    leaseExpirationDurationInSeconds: 3
+#  client:
+#    service-url:
+#      defaultZone: http://localhost:8761/eureka
+#
+#management:
+#  endpoint:
+#    health:
+#      show-details: always
+#  endpoints:
+#    web:
+#      exposure:
+#        include: "*"
