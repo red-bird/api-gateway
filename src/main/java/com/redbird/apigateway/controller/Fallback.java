@@ -16,6 +16,11 @@ public class Fallback {
 
     @PostMapping("/purchaseFallback")
     public Mono<String> purchaseFallback() {
-        return Mono.just("shops-service unhealthy... Please try again later");
+        return Mono.just("purchase-service unhealthy... Please try again later");
+    }
+
+    @PostMapping("/factoryFallback")
+    public Mono<String> factoryFallback() {
+        return Mono.just("factory-service unhealthy... Please try again later");
     }
 }
